@@ -12,3 +12,17 @@ def test_invalid_sequence_characters():
 def test_kmer_count_basic():
     result = count_kmers_with_context("ATCG", 2)
     assert "AT" in result
+
+
+# 🔽 ADD NEW TESTS BELOW THIS LINE
+
+def test_kmer_counts_exact():
+    result = count_kmers_with_context("ATAT", 2)
+    assert result["AT"]["count"] == 2
+
+def test_empty_sequence():
+    assert count_kmers_with_context("", 2) == {}
+
+def test_k_equals_length():
+    result = count_kmers_with_context("ATCG", 4)
+    assert result == {}
