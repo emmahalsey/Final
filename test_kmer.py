@@ -39,3 +39,7 @@ def test_kmer_full_output():
     
     assert result["TC"]["count"] == 1
     assert result["TC"]["next_chars"]["G"] == 1
+
+def test_kmer_requires_next_char():
+    result = count_kmers_with_context("ATAT", 2)
+    assert result["AT"]["count"] == 1
