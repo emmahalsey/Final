@@ -18,7 +18,7 @@ def test_kmer_count_basic():
 
 def test_kmer_counts_exact():
     result = count_kmers_with_context("ATAT", 2)
-    assert result["AT"]["count"] == 2
+    assert result["AT"]["count"] == 1
 
 def test_empty_sequence():
     assert count_kmers_with_context("", 2) == {}
@@ -26,3 +26,16 @@ def test_empty_sequence():
 def test_k_equals_length():
     result = count_kmers_with_context("ATCG", 4)
     assert result == {}
+
+def test_kmer_full_output():
+    result = count_kmers_with_context("ATCG", 2)
+    
+    # Expected:
+    # AT -> C
+    # TC -> G
+    
+    assert result["AT"]["count"] == 1
+    assert result["AT"]["next_chars"]["C"] == 1
+    
+    assert result["TC"]["count"] == 1
+    assert result["TC"]["next_chars"]["G"] == 1
