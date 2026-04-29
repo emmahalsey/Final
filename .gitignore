@@ -1,0 +1,6 @@
+*.ssh
+*.pub
+.Rhistory
+.Rproj.user/
+Agent
+Exam4ssh*
